@@ -1,5 +1,6 @@
 import { TaskListItemComponent } from "./task-list-item.component";
 import { TestBed, ComponentFixture, async } from "@angular/core/testing";
+import { By } from "@angular/platform-browser";
 
 describe("TaskListItemComponent", () => {
   let fixture: ComponentFixture<TaskListItemComponent>;
@@ -19,9 +20,13 @@ describe("TaskListItemComponent", () => {
   });
 
   it("should create", () => {
-    const html = fixture.nativeElement.innerHTML;
-
-    console.log(html);
     expect(component).toBeTruthy();
+  });
+
+  it("should render task name", () => {
+    // const elems = fixture.debugElement.queryAll(By.css('p'))
+
+    const elem = fixture.debugElement.query(By.css(".message"));
+    expect(elem.nativeElement.innerText).toEqual("Message works!");
   });
 });
