@@ -17,6 +17,7 @@ describe("TaskListItemComponent", () => {
   beforeEach(() => {
     fixture = TestBed.createComponent(TaskListItemComponent);
     component = fixture.componentInstance;
+    fixture.detectChanges();
   });
 
   it("should create", () => {
@@ -24,9 +25,16 @@ describe("TaskListItemComponent", () => {
   });
 
   it("should render task name", () => {
-    // const elems = fixture.debugElement.queryAll(By.css('p'))
-
-    const elem = fixture.debugElement.query(By.css(".message"));
+    const elem = fixture.debugElement.query(By.css(".task-name"));
     expect(elem.nativeElement.innerText).toEqual("Message works!");
   });
+
+  it('should render updated task name',()=>{
+
+    component.message = "Updated name!"
+    fixture.detectChanges();
+
+    const elem = fixture.debugElement.query(By.css(".task-name"));
+    expect(elem.nativeElement.innerText).toEqual("Updated name!");
+  })
 });
