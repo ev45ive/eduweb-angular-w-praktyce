@@ -1,6 +1,7 @@
 import { TaskListItemComponent } from "./task-list-item.component";
 import { TestBed, ComponentFixture, async } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
+import { FormsModule, NgModel } from "@angular/forms";
 
 describe("TaskListItemComponent", () => {
   let fixture: ComponentFixture<TaskListItemComponent>;
@@ -9,7 +10,7 @@ describe("TaskListItemComponent", () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [TaskListItemComponent],
-      imports: [],
+      imports: [FormsModule],
       providers: []
     }).compileComponents();
   }));
@@ -48,14 +49,19 @@ describe("TaskListItemComponent", () => {
   });
 
   it("should show task name inside input", () => {
-    const input = fixture.debugElement.query(By.css(".task-name-input"));
-    expect((input.nativeElement as HTMLInputElement).value).toEqual(
-      component.message
-    );
+    // const input = fixture.debugElement.query(By.css(".task-name-input"));
+    const input = fixture.debugElement.query(By.directive(NgModel));
+
+    return fixture.whenStable().then(() => {
+      expect((input.nativeElement as HTMLInputElement).value).toEqual(
+        component.message
+      );
+    });
   });
 
   it("should update task name when input value changes", () => {
-    const inputElem = fixture.debugElement.query(By.css(".task-name-input"));
+    // const inputElem = fixture.debugElement.query(By.css(".task-name-input"));
+    const inputElem = fixture.debugElement.query(By.directive(NgModel));
     const elem = inputElem.nativeElement as HTMLInputElement;
 
     elem.value = "Changed value!";
@@ -66,5 +72,16 @@ describe("TaskListItemComponent", () => {
     });
 
     expect(component.message).toEqual("Changed value!");
+  });
+
+  it("should show error message when task name is empty", () => {
+    const inputElem = fixture.debugElement.query(By.directive(NgModel));
+    const model = inputElem.injector.get(NgModel);
+    // model.control.setValue('wartosc')
+    // fixture.detectChanges()
+    expect(model.valid).toBeFalsy()
+
+    const error = fixture.debugElement.query(By.css(".error"));
+    expect(error).not.toBeNull("Error message not found");
   });
 });
