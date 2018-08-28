@@ -8,6 +8,12 @@ import { Component, OnInit } from "@angular/core";
 export class TaskListItemComponent implements OnInit {
   message = "Message works!";
 
+  editMode = false;
+
+  edit() {
+    this.editMode = true;
+  }
+
   constructor() {}
 
   ngOnInit() {}
