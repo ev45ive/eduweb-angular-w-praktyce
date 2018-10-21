@@ -1,4 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
+
+interface Task {
+  id: number;
+  title: string;
+}
 
 @Component({
   selector: "app-task-list-item",
@@ -8,6 +13,13 @@ import { Component, OnInit } from "@angular/core";
 export class TaskListItemComponent implements OnInit {
   message = "Message works!";
 
+  @Input()
+  task: Task;
+
+  @Output()
+  saved = new EventEmitter<Task>()
+
+
   editMode = false;
 
   edit() {
@@ -16,6 +28,7 @@ export class TaskListItemComponent implements OnInit {
 
   save() {
     this.editMode = false;
+    this.saved.emit(this.task)
   }
 
   constructor() {}

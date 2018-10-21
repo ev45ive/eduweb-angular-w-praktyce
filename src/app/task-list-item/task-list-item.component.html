@@ -1,9 +1,9 @@
 <div *ngIf="!editMode">
-  <p class="task-name">{{message}}</p>
+  <p class="task-name">{{task.title}}</p>
   <button class="edit-button" (click)="edit()">Edit</button>  
 </div>
 <div *ngIf="editMode">
-  <input type="text" class="task-name-input" [(ngModel)]="message" #taskName="ngModel" required>
+  <input type="text" class="task-name-input" [(ngModel)]="task.title" #taskName="ngModel" required>
   
   <div class="error" *ngIf="taskName.hasError('required')">Field canot be empty</div>
   <button class="save-button" (click)="save()">Save</button>  

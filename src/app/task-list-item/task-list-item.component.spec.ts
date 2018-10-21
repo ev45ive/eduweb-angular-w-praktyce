@@ -2,22 +2,39 @@ import { TaskListItemComponent } from "./task-list-item.component";
 import { TestBed, ComponentFixture, async } from "@angular/core/testing";
 import { By } from "@angular/platform-browser";
 import { FormsModule, NgModel } from "@angular/forms";
+import { Component } from "@angular/core";
+
+@Component({
+  template: `<app-task-list-item [task]="task" (saved)="saved($event)">
+  </app-task-list-item>`
+})
+class TaskListItemTEST_HOST {
+  saved() {}
+}
 
 describe("TaskListItemComponent", () => {
-  let fixture: ComponentFixture<TaskListItemComponent>;
+  let fixture: ComponentFixture<TaskListItemTEST_HOST>;
   let component: TaskListItemComponent;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [TaskListItemComponent],
+      declarations: [TaskListItemComponent, TaskListItemTEST_HOST],
       imports: [FormsModule],
       providers: []
     }).compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(TaskListItemComponent);
-    component = fixture.componentInstance;
+    // fixture = TestBed.createComponent(TaskListItemComponent);
+    fixture = TestBed.createComponent(TaskListItemTEST_HOST);
+    // component = fixture.componentInstance;
+    component = fixture.debugElement.query(By.directive(TaskListItemComponent))
+      .componentInstance;
+
+    fixture.debugElement.context.task = {
+      id: 123,
+      title: "Test Task works!"
+    };
     fixture.detectChanges();
   });
 
@@ -27,11 +44,14 @@ describe("TaskListItemComponent", () => {
 
   it("should render task name", () => {
     const elem = fixture.debugElement.query(By.css(".task-name"));
-    expect(elem.nativeElement.innerText).toEqual("Message works!");
+    expect(elem.nativeElement.innerText).toEqual("Test Task works!");
   });
 
-  it("should render updated task name", () => {
-    component.message = "Updated name!";
+  it("should render updated task", () => {
+    component.task = {
+      id: 123,
+      title: "Updated name!"
+    };
     fixture.detectChanges();
 
     const elem = fixture.debugElement.query(By.css(".task-name"));
@@ -71,14 +91,12 @@ describe("TaskListItemComponent", () => {
 
       return fixture.whenStable().then(() => {
         expect((input.nativeElement as HTMLInputElement).value).toEqual(
-          component.message
+          component.task.title
         );
       });
     });
 
     it("should update task name when input value changes", () => {
-      component.editMode = true;
-      fixture.detectChanges();
       // const inputElem = fixture.debugElement.query(By.css(".task-name-input"));
       const inputElem = fixture.debugElement.query(By.directive(NgModel));
       const elem = inputElem.nativeElement as HTMLInputElement;
@@ -90,12 +108,10 @@ describe("TaskListItemComponent", () => {
         target: elem
       });
 
-      expect(component.message).toEqual("Changed value!");
+      expect(component.task.title).toEqual("Changed value!");
     });
 
     it("should show error message when task name is empty", () => {
-      component.editMode = true;
-      fixture.detectChanges();
       const inputElem = fixture.debugElement.query(By.directive(NgModel));
       const model = inputElem.injector.get(NgModel);
       // model.control.setValue('wartosc')
@@ -104,6 +120,23 @@ describe("TaskListItemComponent", () => {
 
       const error = fixture.debugElement.query(By.css(".error"));
       expect(error).not.toBeNull("Error message not found");
+    });
+
+    it("should emit 'saved' event when save button clicked", () => {
+      const button = fixture.debugElement.query(By.css(".save-button"));
+      const saveSpy = spyOn(component, "save").and.callThrough();
+      const savedSpy = spyOn(fixture.componentInstance, "saved");
+
+      const taskToSave = component.task;
+
+      // component.saved.subscribe(task => {
+      //   expect(taskToSave).toEqual(task);
+      //   done();
+      // });
+
+      button.triggerEventHandler("click", {});
+      expect(saveSpy).toHaveBeenCalled();
+      expect(savedSpy).toHaveBeenCalledWith(taskToSave);
     });
   });
 });
