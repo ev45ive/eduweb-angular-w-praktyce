@@ -48,40 +48,62 @@ describe("TaskListItemComponent", () => {
     expect(component.editMode).toEqual(true);
   });
 
-  it("should show task name inside input", () => {
-    // const input = fixture.debugElement.query(By.css(".task-name-input"));
-    const input = fixture.debugElement.query(By.directive(NgModel));
-
-    return fixture.whenStable().then(() => {
-      expect((input.nativeElement as HTMLInputElement).value).toEqual(
-        component.message
-      );
-    });
-  });
-
-  it("should update task name when input value changes", () => {
-    // const inputElem = fixture.debugElement.query(By.css(".task-name-input"));
-    const inputElem = fixture.debugElement.query(By.directive(NgModel));
-    const elem = inputElem.nativeElement as HTMLInputElement;
-
-    elem.value = "Changed value!";
-    // elem.dispatchEvent(new Event("input"));
-
-    inputElem.triggerEventHandler("input", {
-      target: elem
+  describe("in edit mode", () => {
+    beforeEach(() => {
+      component.editMode = true;
+      fixture.detectChanges();
     });
 
-    expect(component.message).toEqual("Changed value!");
-  });
+    it('should switch edit mode off when "save" button is clicked', () => {
+      component.editMode = true;
+      fixture.detectChanges();
+      const editSpy = spyOn(component, "save").and.callThrough();
+      const button = fixture.debugElement.query(By.css(".save-button"));
 
-  it("should show error message when task name is empty", () => {
-    const inputElem = fixture.debugElement.query(By.directive(NgModel));
-    const model = inputElem.injector.get(NgModel);
-    // model.control.setValue('wartosc')
-    // fixture.detectChanges()
-    expect(model.valid).toBeFalsy()
+      button.triggerEventHandler("click", {});
 
-    const error = fixture.debugElement.query(By.css(".error"));
-    expect(error).not.toBeNull("Error message not found");
+      expect(editSpy).toHaveBeenCalled();
+      expect(component.editMode).toEqual(false);
+    });
+
+    it("should show task name inside input", () => {
+      const input = fixture.debugElement.query(By.directive(NgModel));
+
+      return fixture.whenStable().then(() => {
+        expect((input.nativeElement as HTMLInputElement).value).toEqual(
+          component.message
+        );
+      });
+    });
+
+    it("should update task name when input value changes", () => {
+      component.editMode = true;
+      fixture.detectChanges();
+      // const inputElem = fixture.debugElement.query(By.css(".task-name-input"));
+      const inputElem = fixture.debugElement.query(By.directive(NgModel));
+      const elem = inputElem.nativeElement as HTMLInputElement;
+
+      elem.value = "Changed value!";
+      // elem.dispatchEvent(new Event("input"));
+
+      inputElem.triggerEventHandler("input", {
+        target: elem
+      });
+
+      expect(component.message).toEqual("Changed value!");
+    });
+
+    it("should show error message when task name is empty", () => {
+      component.editMode = true;
+      fixture.detectChanges();
+      const inputElem = fixture.debugElement.query(By.directive(NgModel));
+      const model = inputElem.injector.get(NgModel);
+      // model.control.setValue('wartosc')
+      // fixture.detectChanges()
+      expect(model.valid).toBeFalsy();
+
+      const error = fixture.debugElement.query(By.css(".error"));
+      expect(error).not.toBeNull("Error message not found");
+    });
   });
 });

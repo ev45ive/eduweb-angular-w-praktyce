@@ -14,6 +14,10 @@ export class TaskListItemComponent implements OnInit {
     this.editMode = true;
   }
 
+  save() {
+    this.editMode = false;
+  }
+
   constructor() {}
 
   ngOnInit() {}
