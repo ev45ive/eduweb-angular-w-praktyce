@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { MaterialExamplesRoutingModule } from './material-examples-routing.module';
 import { IndicatorsExampleComponent } from './pages/indicators-example/indicators-example.component';
 
-import { MatIconModule, MatBadgeModule, MatTooltipModule } from '@angular/material'
+import { MatIconModule, MatBadgeModule, MatTooltipModule } from '@angular/material';
+import { InteractionsExampleComponent } from './pages/interactions-example/interactions-example.component'
 
 @NgModule({
-    declarations: [IndicatorsExampleComponent],
+    declarations: [IndicatorsExampleComponent, InteractionsExampleComponent],
     imports: [
         CommonModule,
         MaterialExamplesRoutingModule,
