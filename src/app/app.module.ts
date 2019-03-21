@@ -4,6 +4,7 @@ import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MaterialExamplesModule } from './material-examples/material-examples.module';
 // import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 
 
@@ -15,7 +16,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule,
     AppRoutingModule,
     // NoopAnimationsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MaterialExamplesModule
   ],
   providers: [],
   bootstrap: [AppComponent]
