@@ -14,7 +14,7 @@ export class ContactsDataService {
     findContacts(limit = 10) {
         return this.contacts.slice(0, limit)
     }
-    
+
     /* 
         Data source: https://uifaces.co/ 
     */

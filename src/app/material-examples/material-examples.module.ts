@@ -4,7 +4,7 @@ import { CommonModule } from '@angular/common';
 import { MaterialExamplesRoutingModule } from './material-examples-routing.module';
 import { IndicatorsExampleComponent } from './pages/indicators-example/indicators-example.component';
 
-import { MatIconModule, MatBadgeModule, MatTooltipModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatDividerModule } from '@angular/material';
+import { MatIconModule, MatBadgeModule, MatTooltipModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatDividerModule, MatListModule } from '@angular/material';
 import { InteractionsExampleComponent } from './pages/interactions-example/interactions-example.component';
 import { ToolbarsExampleComponent } from './pages/toolbars-example/toolbars-example.component';
 import { ListsExampleComponent } from './pages/lists-example/lists-example.component'
@@ -24,7 +24,9 @@ import { ListsExampleComponent } from './pages/lists-example/lists-example.compo
         MatToolbarModule,
         /* Menu */
         MatMenuModule,
-        MatDividerModule
+        MatDividerModule,
+        /* Lists */
+        MatListModule
     ]
 })
 export class MaterialExamplesModule { }

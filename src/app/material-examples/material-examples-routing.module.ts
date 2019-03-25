@@ -13,7 +13,7 @@ const routes: Routes = [
                 path: '', redirectTo: 'lists', pathMatch: 'full'
             },
             {
-                path:'lists', component:ListsExampleComponent
+                path: 'lists', component: ListsExampleComponent
             }
             // {
             //     path:'toolbars', component: ToolbarsExampleComponent
