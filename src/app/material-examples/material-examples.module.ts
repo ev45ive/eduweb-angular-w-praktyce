@@ -6,10 +6,11 @@ import { IndicatorsExampleComponent } from './pages/indicators-example/indicator
 
 import { MatIconModule, MatBadgeModule, MatTooltipModule, MatButtonModule, MatToolbarModule, MatMenuModule, MatDividerModule } from '@angular/material';
 import { InteractionsExampleComponent } from './pages/interactions-example/interactions-example.component';
-import { ToolbarsExampleComponent } from './pages/toolbars-example/toolbars-example.component'
+import { ToolbarsExampleComponent } from './pages/toolbars-example/toolbars-example.component';
+import { ListsExampleComponent } from './pages/lists-example/lists-example.component'
 
 @NgModule({
-    declarations: [IndicatorsExampleComponent, InteractionsExampleComponent, ToolbarsExampleComponent],
+    declarations: [IndicatorsExampleComponent, InteractionsExampleComponent, ToolbarsExampleComponent, ListsExampleComponent],
     imports: [
         CommonModule,
         MaterialExamplesRoutingModule,
