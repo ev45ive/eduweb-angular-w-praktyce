@@ -9,10 +9,11 @@ import { InteractionsExampleComponent } from './pages/interactions-example/inter
 import { ToolbarsExampleComponent } from './pages/toolbars-example/toolbars-example.component';
 import { ListsExampleComponent } from './pages/lists-example/lists-example.component';
 import { SimpleContactsListComponent } from './components/simple-contacts-list/simple-contacts-list.component';
-import { ContactDetailsListComponent } from './components/contact-details-list/contact-details-list.component'
+import { ContactDetailsListComponent } from './components/contact-details-list/contact-details-list.component';
+import { ContactsSelectionListComponent } from './components/contacts-selection-list/contacts-selection-list.component'
 
 @NgModule({
-    declarations: [IndicatorsExampleComponent, InteractionsExampleComponent, ToolbarsExampleComponent, ListsExampleComponent, SimpleContactsListComponent, ContactDetailsListComponent],
+    declarations: [IndicatorsExampleComponent, InteractionsExampleComponent, ToolbarsExampleComponent, ListsExampleComponent, SimpleContactsListComponent, ContactDetailsListComponent, ContactsSelectionListComponent],
     imports: [
         CommonModule,
         MaterialExamplesRoutingModule,

@@ -8,6 +8,7 @@ import { ContactsDataService, Contact } from '../../services/contacts-data.servi
 })
 export class ListsExampleComponent implements OnInit {
 
+    selected: Contact
     contacts: Contact[] = []
 
     constructor(private service: ContactsDataService) { }

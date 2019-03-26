@@ -1,0 +1,23 @@
+<mat-action-list>
+    <button mat-list-item *ngFor="let contact of contacts" (click)="select(contact)">
+        <img mat-list-avatar class="list-avatar-rectangle" [src]="contact.photo" [alt]="contact.name">
+        <div matLine>{{contact.name}}</div>
+        <div matLine>{{contact.position}}</div>
+
+        <!-- <button mat-icon-button> -->
+        <mat-icon>chevron_right</mat-icon>
+        <!-- </button> -->
+
+        <mat-divider></mat-divider>
+    </button>
+</mat-action-list>
+
+
+<style>
+    img.mat-list-avatar.list-avatar-rectangle {
+
+        width: 56px;
+        border-radius: 2px;
+        object-fit: cover;
+    }
+</style>

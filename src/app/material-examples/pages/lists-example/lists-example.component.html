@@ -1,15 +1,37 @@
 <div class="examples-container">
 
-    <p>
-        lists-example works!
-    </p>
+    <h3 class="mat-display-1">Contacts</h3>
+
+
+    <div class="row">
+
+        <app-contacts-selection-list class="col" [contacts]="contacts" (selectionChange)="selected = $event">
+        </app-contacts-selection-list>
+
+        <ng-container *ngIf="selected">
+
+            <mat-divider vertical="true"></mat-divider>
+
+            <app-contact-details-list class="col" style="margin-left:16px;" [contact]="selected">
+            </app-contact-details-list>
+        </ng-container>
+
+
+    </div>
 
     <!-- <app-simple-contacts-list [contacts]="contacts"></app-simple-contacts-list> -->
-    
-    <app-contact-details-list [contact]="contacts[0]"></app-contact-details-list>
+
 
 </div>
 <style>
+    .col {
+        flex: 1;
+    }
+
+    .row {
+        display: flex;
+    }
+
     .spacer {
         flex: 1 1 0%;
     }
