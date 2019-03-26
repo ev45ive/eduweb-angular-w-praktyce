@@ -1,3 +1,37 @@
-<p>
-  contact-details-list works!
-</p>
+<mat-list>
+    <div matSubheader>Personal Details</div>
+    <mat-list-item>
+        <mat-icon mat-list-icon>person</mat-icon>
+        <div matLine>
+            {{contact.name}}
+        </div>
+        <mat-divider></mat-divider>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-icon mat-list-icon>alternate_email</mat-icon>
+        <div matLine>
+            {{contact.email}}
+        </div>
+        <button mat-icon-button>
+            <mat-icon>email</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+    </mat-list-item>
+    <mat-list-item>
+        <mat-icon mat-list-icon>phone</mat-icon>
+        <div matLine>
+            {{contact.phone? contact.phone : 'no phone details'}}
+        </div>
+        <button mat-icon-button [disabled]="!contact.phone">
+            <mat-icon>phone</mat-icon>
+        </button>
+        <mat-divider></mat-divider>
+    </mat-list-item>
+    <div matSubheader>Company Details</div>
+    <mat-list-item>
+        <mat-icon mat-list-icon>business</mat-icon>
+        <div matLine>{{contact.position}}</div>
+    </mat-list-item>
+
+
+</mat-list>

@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 export interface Contact {
-    name: string; position: string; email: string; photo: string;
+    name: string; position: string; email: string; photo: string; phone?: string;
 }
 
 @Injectable({
