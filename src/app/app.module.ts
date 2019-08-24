@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsExampleComponent } from './material-examples/pages/forms-example/forms-example.component';
 // import {NoopAnimationsModule} from '@angular/platform-browser/animations';
+import { MatInputModule, MatFormFieldModule, MatButtonModule, MatIconModule } from '@angular/material';
 
 
 @NgModule({
@@ -17,7 +18,11 @@ import { FormsExampleComponent } from './material-examples/pages/forms-example/f
     BrowserModule,
     AppRoutingModule,
     // NoopAnimationsModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatInputModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
