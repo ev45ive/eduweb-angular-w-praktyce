@@ -6,14 +6,7 @@
 
 
     <mat-form-field>
-        <input type="text" matInput placeholder="Text field" #inputRef>
-
-        <span matPrefix>$&nbsp;</span>
-        <!-- <span matSuffix>.00</span> -->
-        <button mat-button matSuffix>OK</button>
-
-        <mat-hint align="start">Max characters 10</mat-hint>
-        <mat-hint align="end">{{inputRef.value?.length || 0}}/10</mat-hint>
+        <input type="text" matInput placeholder="Text field">
     </mat-form-field>
 
 </div>
