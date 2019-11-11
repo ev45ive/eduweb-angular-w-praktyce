@@ -24,6 +24,20 @@
 
         <div class="options-container">
             <div>
+                <mat-form-field>
+                    <input matInput placeholder="Due date" formControlName="duedate" [matDatepickerFilter]="dateFilter"
+                        (dateInput)="handleDate($event)" (dateChange)="handleDate($event)"
+                        [matDatepicker]="duedate_picker">
+                    <mat-datepicker-toggle matSuffix [for]="duedate_picker">
+                        <mat-icon matDatepickerToggleIcon>keyboard_arrow_down</mat-icon>
+                    </mat-datepicker-toggle>
+                    <mat-datepicker #duedate_picker (yearSelected)="handleDate($event)" [touchUi]="isMobile | async"
+                        (monthSelected)="handleDate($event)" ([opened])="datepickerOpened" [dateClass]="dateClass">
+                    </mat-datepicker>
+                </mat-form-field>
+            </div>
+
+            <div>
                 <h5>Priority</h5>
                 <mat-radio-group formControlName="priotity">
                     <mat-radio-button color="primary" value="low">Low</mat-radio-button>
@@ -88,6 +102,10 @@
     mat-radio-button~mat-radio-button,
     mat-checkbox~mat-checkbox {
         margin-left: 16px;
+    }
+
+    ::ng-deep .datepicker-review-day div {
+        color: red !important;
     }
 
     .examples-container {

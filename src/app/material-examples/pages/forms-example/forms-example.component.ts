@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { CustomErrorStateMatcher } from './CustomErrorStateMatcher';
 import { FormControl, Validators, FormGroup } from '@angular/forms';
-
+import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
+import { map } from 'rxjs/operators'
 
 @Component({
     selector: 'app-forms-example',
@@ -17,6 +18,7 @@ export class FormsExampleComponent implements OnInit {
             Validators.pattern(/^[a-zA-z]/)
         ]),
         type: new FormControl('Task'),
+        duedate: new FormControl(new Date()),
         priotity: new FormControl(''),
         options: new FormGroup({
             billable: new FormControl(false),
@@ -25,15 +27,37 @@ export class FormsExampleComponent implements OnInit {
         }),
         description: new FormControl(''),
     })
-
+    datepickerOpened = false;
     errorMatcher = new CustomErrorStateMatcher()
 
-    constructor() { }
+    constructor(private breakpointObserver: BreakpointObserver) { }
+
+    isMobile = this.breakpointObserver.observe([
+        Breakpoints.Handset,
+        Breakpoints.Tablet
+    ]).pipe(
+        map(result => result.matches)
+    )
 
     ngOnInit() {
     }
 
-    createTask(){
+    handleDate($event) {
+        console.log($event)
+    }
+
+    dateFilter(d: Date) {
+        const day = d.getDay()
+        return day !== 0 && day !== 6;
+    }
+
+    dateClass(d: Date) {
+        const date = d.getDate()
+        return (date === 1 || date === 20) ? 'datepicker-review-day' : undefined
+    }
+
+    createTask() {
         console.log(this.taskForm.value)
     }
 }
+
