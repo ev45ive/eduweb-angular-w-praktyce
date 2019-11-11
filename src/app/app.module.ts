@@ -7,7 +7,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsExampleComponent } from './material-examples/pages/forms-example/forms-example.component';
 // import {NoopAnimationsModule} from '@angular/platform-browser/animations';
 import { MatInputModule, MatFormFieldModule, MatButtonModule, MatIconModule, MatSelectModule, MatRadioModule, MatCheckboxModule } from '@angular/material';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -18,7 +18,8 @@ import { FormsModule } from '@angular/forms';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    FormsModule,
+    // FormsModule,
+    ReactiveFormsModule,
     // NoopAnimationsModule,
     BrowserAnimationsModule,
     MatButtonModule,
