@@ -1,11 +1,11 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsExampleComponent } from './material-examples/pages/forms-example/forms-example.component';
+import { FormsExtrasComponent } from './material-examples/pages/forms-extras/forms-extras.component';
 
 const routes: Routes = [
     {
         path: '',
-        component: FormsExampleComponent
+        component: FormsExtrasComponent
     }
 ];
 
