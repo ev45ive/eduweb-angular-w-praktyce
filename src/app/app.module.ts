@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsExampleComponent } from './material-examples/pages/forms-example/forms-example.component';
 // import {NoopAnimationsModule} from '@angular/platform-browser/animations';
-import { MatInputModule, MatFormFieldModule, MatButtonModule, MatIconModule, MatSelectModule, MatRadioModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule } from '@angular/material';
+import { MatInputModule, MatFormFieldModule, MatButtonModule, MatIconModule, MatSelectModule, MatRadioModule, MatCheckboxModule, MatDatepickerModule, MatNativeDateModule, MatAutocompleteModule } from '@angular/material';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { FormsExtrasComponent } from './material-examples/pages/forms-extras/forms-extras.component';
 
@@ -32,7 +32,8 @@ import { FormsExtrasComponent } from './material-examples/pages/forms-extras/for
     MatRadioModule,
     MatCheckboxModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatAutocompleteModule
   ],
   providers: [],
   bootstrap: [AppComponent]

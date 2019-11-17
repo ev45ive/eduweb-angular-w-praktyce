@@ -1,8 +1,19 @@
 <div class="examples-container">
 
-    <h3 class="mat-display-3">Edit Task</h3>
+    <h3 class="mat-display-3">Task Details</h3>
 
+    <mat-form-field>
+        <input type="text" placeholder="Assign to" matInput 
+            [formControl]="assigneeInput" [matAutocomplete]="assigneeAutoComplete">
+        
+        <mat-autocomplete #assigneeAutoComplete="matAutocomplete" [displayWith]="formatUserSuggestion" (optionSelected)="selectAssignee($event)">
+            <mat-option *ngFor="let option of suggestions | async" [value]="option">
+              {{ option.name }}
+            </mat-option>
+          </mat-autocomplete>
+    </mat-form-field>
 
+    <pre>{{ taskExtras.value | json }}</pre>
     
 
 </div>
