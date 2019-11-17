@@ -14,16 +14,16 @@ const routes: Routes = [
             },
             {
                 path: 'lists', component: ListsExampleComponent
+            },
+            {
+                path:'toolbars', component: ToolbarsExampleComponent
+            },
+            {
+                path: 'interactions', component: InteractionsExampleComponent
+            },
+            {
+                path: 'indicators', component: IndicatorsExampleComponent
             }
-            // {
-            //     path:'toolbars', component: ToolbarsExampleComponent
-            // }
-            // {
-            //     path: 'interactions', component: InteractionsExampleComponent
-            // },
-            // {
-            //     path: 'indicators', component: IndicatorsExampleComponent
-            // }
         ]
 
     }
