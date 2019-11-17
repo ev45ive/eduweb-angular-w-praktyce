@@ -1,0 +1,23 @@
+<mat-sidenav-container style="flex: 1;">
+        <mat-sidenav [opened]="selected" class="sidenav" mode="side" fixedBottomGap="true" position="end">
+            <app-contact-details-list *ngIf="selected" [contact]="selected"></app-contact-details-list>
+        </mat-sidenav>
+    
+        <mat-sidenav-content>
+            <app-contacts-selection-list [contacts]="contacts" (selectionChange)="toggleSelection($event)">
+            </app-contacts-selection-list>
+    
+        </mat-sidenav-content>
+    
+    </mat-sidenav-container>
+    
+    <style>
+        .sidenav {
+            width: 400px;
+        }
+    
+        :host {
+            flex: 1;
+            display:flex;
+        }
+    </style>
