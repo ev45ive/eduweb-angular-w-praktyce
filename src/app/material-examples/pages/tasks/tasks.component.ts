@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 import { TasksDataSource } from './tasks.datasource';
-import { MatPaginator } from '@angular/material';
+import { MatPaginator, MatSort, Sort } from '@angular/material';
 
 @Component({
     selector: 'app-tasks',
@@ -12,6 +12,9 @@ export class TasksComponent implements OnInit, AfterViewInit {
     @ViewChild(MatPaginator)
     paginator: MatPaginator
 
+    @ViewChild(MatSort)
+    sort: MatSort
+
     activeColumns = ['id', 'title', 'completed', 'menu']
 
     constructor(public dataSource: TasksDataSource) { }
@@ -22,6 +25,9 @@ export class TasksComponent implements OnInit, AfterViewInit {
     ngAfterViewInit() {
         this.paginator.page.subscribe(page => {
             this.dataSource.setPage(page)
+        })
+        this.sort.sortChange.subscribe((sort:Sort) => {
+            this.dataSource.setSort(sort)
         })
     }
 
