@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import * as  tasks from './tasks-data.json'
 import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 export interface TasksQuery { filter?: string, page?: number, sort?: any, perpage?: number }
 export interface Task {
@@ -27,7 +28,7 @@ export interface Task {
 })
 export class TasksDataService {
 
-    constructor() { }
+    constructor(private http:HttpClient) { }
 
     queryTasks(query: TasksQuery) {
         let { filter = '', page = 1, sort = 'title', perpage = 10 } = query;

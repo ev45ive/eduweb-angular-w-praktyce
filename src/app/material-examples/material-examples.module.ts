@@ -16,11 +16,13 @@ import { LayoutModule } from '@angular/cdk/layout';
 import { ProjectsComponent } from './pages/projects/projects.component';
 import { TasksComponent } from './pages/tasks/tasks.component';
 import { ContactsComponent } from './pages/contacts/contacts.component'
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
     declarations: [IndicatorsExampleComponent, InteractionsExampleComponent, ToolbarsExampleComponent, ListsExampleComponent, SimpleContactsListComponent, ContactDetailsListComponent, ContactsSelectionListComponent, MainNavigationComponent, ProjectsComponent, TasksComponent, ContactsComponent],
     imports: [
         CommonModule,
+        HttpClientModule,
         MaterialExamplesRoutingModule,
         /* Indicators */
         MatIconModule,
